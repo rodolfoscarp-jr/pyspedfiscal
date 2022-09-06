@@ -1,0 +1,6 @@
+from pyspedfiscal.bloco_c.registro_c001 import RegistroC001
+from pyspedfiscal.bloco_c.registro_c100 import RegistroC100
+from pyspedfiscal.bloco_c.registro_c170 import RegistroC170
+from pyspedfiscal.bloco_c.registro_c190 import RegistroC190
+from pyspedfiscal.bloco_c.registro_c195 import RegistroC195
+from pyspedfiscal.bloco_c.registro_c197 import RegistroC197

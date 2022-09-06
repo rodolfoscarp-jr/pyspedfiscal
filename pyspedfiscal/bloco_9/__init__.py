@@ -1,0 +1,2 @@
+from pyspedfiscal.bloco_9.registro_9999 import Registro9999
+from pyspedfiscal.bloco_9.registro_9001 import Registro9001

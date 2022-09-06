@@ -1,0 +1,12 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Distribution / packaging
+wheels/
+share/python-wheels/
+
+# Environments
+venv/
+
+# Pypi
+.pypirc

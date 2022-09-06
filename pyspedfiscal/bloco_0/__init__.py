@@ -1,0 +1,1 @@
+from pyspedfiscal.bloco_0.registro_0000 import Registro0000

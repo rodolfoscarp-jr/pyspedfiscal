@@ -1,12 +1,12 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open("README.md", "r") as fh:
     readme = fh.read()
 
 setup(
     name='pyspedfiscal',
-    version='0.1.0',
-    url='',
+    version='0.1.2',
+    url='https://github.com/rodolfoscarp-jr/pyspedfiscal',
     license='MIT License',
     author='Rodolfo Scarp',
     long_description=readme,
@@ -14,6 +14,6 @@ setup(
     author_email='rodolfoscarp@gmail.com',
     keywords='spedfiscal',
     description=u'Serializa um arquivo do tipo SPED Fiscal',
-    packages=['pacotepypi'],
+    packages=find_packages(),
     install_requires=['pydantic']
 )

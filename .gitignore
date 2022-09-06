@@ -10,3 +10,7 @@ venv/
 
 # Pypi
 .pypirc
+
+# distribuição
+dist/
+*.egg-info

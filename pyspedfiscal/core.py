@@ -9,37 +9,21 @@ from pyspedfiscal.exception import ArquivoInvalido
 
 class SpedFiscal:
     def __init__(self) -> None:
+        self._zerar_registros()
+
+    def _zerar_registros(self):
         self._registro_0000: Registro0000 = None
         self._registro_c001: RegistroC001 = None
         self._registro_9001: Registro9001 = None
         self._registro_9999: Registro9999 = None
 
-    def _ler_bloco_0(self, tipo_registro: str, linha: str):
-        pass
+    @property
+    def bloco_0(self):
+        return self._registro_c001
 
-    def _ler_bloco_b(self, tipo_registro: str, linha: str):
-        pass
-
-    def _ler_bloco_c(self, tipo_registro: str, linha: str):
-        pass
-
-    def _ler_bloco_d(self, tipo_registro: str, linha: str):
-        pass
-
-    def _ler_bloco_e(self, tipo_registro: str, linha: str):
-        pass
-
-    def _ler_bloco_g(self, tipo_registro: str, linha: str):
-        pass
-
-    def _ler_bloco_h(self, tipo_registro: str, linha: str):
-        pass
-
-    def _ler_bloco_k(self, tipo_registro: str, linha: str):
-        pass
-
-    def _ler_bloco_9(self, tipo_registro: str, linha: str) -> bool:
-        pass
+    @property
+    def abertura(self):
+        return self._registro_0000
 
     def validar(self, arquivo: str):
 
@@ -61,6 +45,9 @@ class SpedFiscal:
         # Valida o arquivo
         if not self.validar(arquivo):
             raise ArquivoInvalido(arquivo)
+
+        # Remove
+        self._zerar_registros()
 
         with open(arquivo, 'r', encoding='latin-1') as arq_sped:
             for linha in arq_sped:
@@ -111,7 +98,7 @@ class SpedFiscal:
                         self._registro_9001 = Registro9001.ler_registro(linha)
 
                     # Nivel 0 - Encerramento do arquivo
+                    # Ultimo Registro do arquivo
                     elif tipo_registro == '9999':
                         self._registro_9999 = Registro9999.ler_registro(linha)
                         break
-                        # Final do arquivo

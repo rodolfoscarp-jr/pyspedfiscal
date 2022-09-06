@@ -17,6 +17,7 @@ from pyspedfiscal._registro import Registro
 from pyspedfiscal.bloco_c.registro_c170 import RegistroC170
 # from pyspedfiscal.bloco_c.registro_c180 import RegistroC180
 from pyspedfiscal.bloco_c.registro_c190 import RegistroC190
+from pyspedfiscal.bloco_c.registro_c195 import RegistroC195
 
 
 class IndOper(CampoEnumerate):
@@ -94,3 +95,4 @@ class RegistroC100(Registro):
     registros_c170: List[RegistroC170] = Field(default_factory=list)
     # registros_c180: List[RegistroC180] = Field(default_factory=list)
     registros_c190: List[RegistroC190] = Field(default_factory=list)
+    registros_c195: List[RegistroC195] = Field(default_factory=list)

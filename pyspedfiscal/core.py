@@ -81,15 +81,15 @@ class SpedFiscal:
                         registro_c190 = RegistroC190.ler_registro(linha)
                         registro_c100.registros_c190.append(registro_c190)
 
-                    # Nivel 4 - Filho C190
+                    # Nivel 3 - Filho C100
                     elif tipo_registro == 'C195':
                         registro_c195 = RegistroC195.ler_registro(linha)
-                        registro_c190.registros_c195.append(registro_c195)
+                        registro_c100.registros_c195.append(registro_c195)
 
-                    # Nivel 4 - Filho C197
+                    # Nivel 4 - Filho C195
                     elif tipo_registro == 'C197':
                         registro_c197 = RegistroC197.ler_registro(linha)
-                        registro_c190.registros_c195.append(registro_c197)
+                        registro_c195.registros_c197.append(registro_c197)
 
                 # Bloco 9
                 elif tipo_registro.startswith('9'):

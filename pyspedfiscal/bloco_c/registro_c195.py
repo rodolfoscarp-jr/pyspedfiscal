@@ -1,6 +1,9 @@
-from typing import Literal
+from typing import List, Literal
 from pyspedfiscal.campos import CampoAlphanumerico
 from pyspedfiscal._registro import Registro
+from pydantic import Field
+
+from pyspedfiscal.bloco_c.registro_c197 import RegistroC197
 
 
 class RegistroC195(Registro):
@@ -11,3 +14,5 @@ class RegistroC195(Registro):
     reg: Literal['C195']
     cod_obs: CampoAlphanumerico
     txt_compl: CampoAlphanumerico
+
+    registros_c197: List[RegistroC197] = Field(default_factory=list)

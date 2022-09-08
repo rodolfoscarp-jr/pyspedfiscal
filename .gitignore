@@ -4,13 +4,12 @@ __pycache__/
 # Distribution / packaging
 wheels/
 share/python-wheels/
+dist/
+*.egg-info
+build/
 
 # Environments
 venv/
 
 # Pypi
 .pypirc
-
-# distribuição
-dist/
-*.egg-info

@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='pyspedfiscal',
-    version='0.1.4',
+    version='0.1.6',
     url='https://github.com/rodolfoscarp-jr/pyspedfiscal',
     license='MIT License',
     author='Rodolfo Scarp',
@@ -15,5 +15,5 @@ setup(
     keywords='spedfiscal',
     description=u'Serializa um arquivo do tipo SPED Fiscal',
     packages=find_packages(exclude=['test*']),
-    install_requires=['pydantic==1.10.2']
+    install_requires=['pydantic']
 )

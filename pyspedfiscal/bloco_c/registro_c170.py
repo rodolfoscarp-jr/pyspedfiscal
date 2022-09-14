@@ -52,7 +52,7 @@ class RegistroC170(Registro):
     cst_cofins: CampoInteiro
     vl_bc_cofins: CampoDecimal
     aliq_cofins_percent: CampoDecimal
-    quant_bc_cof_ins: CampoInteiro
+    quant_bc_cofins: CampoDecimal
     aliq_cofins: CampoDecimal
     vl_cofins: CampoDecimal
     cod_cta: CampoAlphanumerico

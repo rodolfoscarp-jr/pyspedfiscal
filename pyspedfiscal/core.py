@@ -18,7 +18,7 @@ class SpedFiscal:
         self._registro_9999: Registro9999 = None
 
     @property
-    def bloco_0(self):
+    def bloco_c(self):
         return self._registro_c001
 
     @property

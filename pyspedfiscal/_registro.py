@@ -9,15 +9,16 @@ class Registro(BaseModel, ABC):
         valores = linha.split("|")[1:-1]
 
         # Os campos iniciados com registros_ são filhos do registro
-        campos = [campo for campo in cls.__fields__.keys(
-        ) if not campo.startswith('registros_')]
+
+        campos = list(cls.__fields__.keys())
+
+        # Se existem
+        if cls.__exclude_fields__:
+            campos = [
+                campo for campo in campos if campo not in cls.__exclude_fields__]
 
         # Checa o o tamnho do registro
         if len(campos) != len(valores):
-            print(len(campos), len(valores))
-            print(campos)
-            print(valores)
-
             raise TamanhoRegistroInvalido(
                 f'Registro com tamanho inválido. \n {linha}')
 

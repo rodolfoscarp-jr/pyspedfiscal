@@ -1,4 +1,4 @@
-from typing import List, Literal
+from typing import List, Literal, Optional
 from pyspedfiscal.campos import (
     CampoData, CampoDecimal, CampoInteiro, CampoAlphanumerico, CampoSerie, CampoEnumerate
 )
@@ -7,9 +7,9 @@ from typing import Literal
 from pyspedfiscal.tabelas import CodSit, CodMod
 from pyspedfiscal._registro import Registro
 
-# from pyspedfiscal.bloco_c.registro_c101 import RegistroC101
-# from pyspedfiscal.bloco_c.registro_c105 import RegistroC105
-# from pyspedfiscal.bloco_c.registro_c110 import RegistroC110
+from pyspedfiscal.bloco_c.registro_c101 import RegistroC101
+from pyspedfiscal.bloco_c.registro_c105 import RegistroC105
+from pyspedfiscal.bloco_c.registro_c110 import RegistroC110
 # from pyspedfiscal.bloco_c.registro_c120 import RegistroC120
 # from pyspedfiscal.bloco_c.registro_c130 import RegistroC130
 # from pyspedfiscal.bloco_c.registro_c140 import RegistroC140
@@ -85,14 +85,18 @@ class RegistroC100(Registro):
     vl_cofins_st: CampoDecimal
 
     # Registros filhos nivel 3
-    # registros_c101: List[RegistroC101] = Field(default_factory=list)
-    # registros_c105: List[RegistroC105] = Field(default_factory=list)
-    # registros_c110: List[RegistroC110] = Field(default_factory=list)
+    registros_c101: Optional[RegistroC101] = Field(exclude=True)
+    registros_c105: Optional[RegistroC105] = Field(exclude=True)
+    registros_c110: List[RegistroC110] = Field(
+        default_factory=list, exclude=True)
     # registros_c120: List[RegistroC120] = Field(default_factory=list)
     # registros_c130: List[RegistroC130] = Field(default_factory=list)
     # registros_c140: List[RegistroC140] = Field(default_factory=list)
     # registros_c160: List[RegistroC160] = Field(default_factory=list)
-    registros_c170: List[RegistroC170] = Field(default_factory=list)
+    registros_c170: List[RegistroC170] = Field(
+        default_factory=list, exclude=True)
     # registros_c180: List[RegistroC180] = Field(default_factory=list)
-    registros_c190: List[RegistroC190] = Field(default_factory=list)
-    registros_c195: List[RegistroC195] = Field(default_factory=list)
+    registros_c190: List[RegistroC190] = Field(
+        default_factory=list, exclude=True)
+    registros_c195: List[RegistroC195] = Field(
+        default_factory=list, exclude=True)

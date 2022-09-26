@@ -156,6 +156,10 @@ class CampoCNPJouCPF(CampoInteiro):
     pass
 
 
+class CampoChaveAcesso(CampoAlphanumerico):
+    pass
+
+
 class OutroCampo(Campo):
     @classmethod
     def __get_validators__(cls):

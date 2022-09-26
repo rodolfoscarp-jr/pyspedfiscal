@@ -15,4 +15,5 @@ class RegistroC195(Registro):
     cod_obs: CampoAlphanumerico
     txt_compl: CampoAlphanumerico
 
-    registros_c197: List[RegistroC197] = Field(default_factory=list)
+    registros_c197: List[RegistroC197] = Field(
+        default_factory=list, exclude=True)

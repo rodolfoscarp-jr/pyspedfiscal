@@ -13,3 +13,6 @@ venv/
 
 # Pypi
 .pypirc
+
+# Tests
+.pytest_cache

@@ -18,4 +18,5 @@ class RegistroC001(Registro):
     ind_mov: IndMov
 
     # Registros filhos nivel 2
-    registros_c100: List[RegistroC100] = Field(default_factory=list)
+    registros_c100: List[RegistroC100] = Field(
+        default_factory=list, exclude=True)

@@ -21,7 +21,21 @@ sped_fiscal.importar_arquivo('/PATH')
 
   - [x] C001
   - [x] C100
+  - [x] C101
+  - [x] C105
+  - [x] C110
+  - [x] C111
+  - [x] C112
+  - [x] C113
+  - [x] C114
+  - [x] C115
+  - [x] C116
+  - [x] C120
+  - [x] C130
+  - [x] C140
+  - [x] C160
   - [x] C170
+  - [x] C180
   - [x] C190
   - [x] C195
   - [x] C197
@@ -33,7 +47,7 @@ sped_fiscal.importar_arquivo('/PATH')
 
 ### Instalação
 
-- `pip install pyspedfiscal`
+- `pip install https://test.pypi.org/simple/pyspedfiscal`
 
 ### Dependencias
 

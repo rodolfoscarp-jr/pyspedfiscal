@@ -1,6 +1,6 @@
 from typing import List, Literal
 from pyspedfiscal.campos import CampoAlphanumerico
-from pyspedfiscal._registro import Registro
+from pyspedfiscal.models import Registro
 from pydantic import Field
 
 from pyspedfiscal.bloco_c.registro_c197 import RegistroC197

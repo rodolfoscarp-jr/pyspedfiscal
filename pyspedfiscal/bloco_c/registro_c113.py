@@ -2,7 +2,7 @@ from typing import Literal
 from pyspedfiscal.campos import CampoAlphanumerico, CampoEnumerate, CampoSerie, CampoInteiro, CampoData, CampoChaveAcesso
 from pyspedfiscal.tabelas import CodMod
 from pydantic import Field
-from pyspedfiscal._registro import Registro
+from pyspedfiscal.models import Registro
 
 
 class IndOper(CampoEnumerate):

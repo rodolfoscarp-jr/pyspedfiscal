@@ -5,7 +5,7 @@ from pyspedfiscal.campos import (
 from pydantic import Field
 from typing import Literal
 from pyspedfiscal.tabelas import CodSit, CodMod
-from pyspedfiscal._registro import Registro
+from pyspedfiscal.models import Registro
 
 from pyspedfiscal.bloco_c.registro_c101 import RegistroC101
 from pyspedfiscal.bloco_c.registro_c105 import RegistroC105

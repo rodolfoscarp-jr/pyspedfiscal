@@ -9,8 +9,7 @@ arquivo_teste = Path(__file__).parent / 'arquivos' / 'arquivo_teste.txt'
 class TestSpedFiscal(unittest.TestCase):
 
     def test_deve_ler_um_arquivo_sped_fiscal(self):
-        sped_fiscal = SpedFiscal()
-        sped_fiscal.importar_arquivo(arquivo_teste)
+        sped_fiscal = SpedFiscal.importar(arquivo_teste)
 
     def test_deve_validar_um_arquivo_fiscal(self):
 

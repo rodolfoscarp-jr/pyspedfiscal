@@ -4,11 +4,12 @@ Lê e serializa um arquivo do tipo Sped Fiscal
 
 ### Exemplo
 
+Utilize o metodo da classe `importar` para carregar um arquivo seped.
+
 ```python
 from pyspedfiscal import SpedFiscal
 
-sped_fiscal = SpedFiscal()
-sped_fiscal.importar_arquivo('/PATH')
+sped_fiscal = SpedFiscal.importar('caminho_arquivo')
 ```
 
 ### Registros Implementados

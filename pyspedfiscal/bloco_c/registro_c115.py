@@ -1,6 +1,6 @@
 from typing import Literal
 from pyspedfiscal.campos import CampoAlphanumerico, CampoEnumerate, CampoCPF, CampoCNPJ, CampoInteiro
-from pyspedfiscal._registro import Registro
+from pyspedfiscal.models import Registro
 
 
 class IndCarga(CampoEnumerate):

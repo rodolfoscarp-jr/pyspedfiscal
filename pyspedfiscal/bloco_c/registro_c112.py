@@ -1,6 +1,6 @@
 from typing import Literal
 from pyspedfiscal.campos import CampoAlphanumerico, CampoEnumerate, CampoDecimal, CampoData
-from pyspedfiscal._registro import Registro
+from pyspedfiscal.models import Registro
 
 
 class CodDA(CampoEnumerate):

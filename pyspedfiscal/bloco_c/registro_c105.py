@@ -1,6 +1,6 @@
 from typing import Literal
 from pyspedfiscal.campos import CampoAlphanumerico, CampoEnumerate
-from pyspedfiscal._registro import Registro
+from pyspedfiscal.models import Registro
 
 
 class Oper(CampoEnumerate):

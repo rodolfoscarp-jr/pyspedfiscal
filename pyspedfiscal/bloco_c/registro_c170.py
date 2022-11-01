@@ -1,7 +1,7 @@
 from typing import Literal
 from pyspedfiscal.campos import CampoDecimal, CampoInteiro, CampoAlphanumerico, CampoEnumerate
 from pydantic import BaseModel, Field
-from pyspedfiscal._registro import Registro
+from pyspedfiscal.models import Registro
 
 
 class IndMov(CampoEnumerate):

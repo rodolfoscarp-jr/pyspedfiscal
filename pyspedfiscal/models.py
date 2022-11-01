@@ -1,4 +1,5 @@
-from abc import ABC
+from abc import ABC, abstractmethod
+from typing import List
 from pydantic import BaseModel
 from pyspedfiscal.exception import ValorCampoInvalido, LinhaRegistroInvalida, TamanhoRegistroInvalido
 
@@ -28,3 +29,13 @@ class Registro(BaseModel, ABC):
             return cls(**valores_dict)
         except ValorCampoInvalido as e:
             raise LinhaRegistroInvalida(f'Linha invalida.\n{linha}\n{e}')
+
+
+class Bloco(BaseModel, ABC):
+
+    @abstractmethod
+    def ler_registros(self, registros: List[str]):
+        pass
+
+    def __setattr__(self, name, value):
+        self.__dict__[name] = value

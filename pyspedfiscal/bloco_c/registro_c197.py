@@ -1,6 +1,6 @@
 from typing import Literal
 from pyspedfiscal.campos import CampoDecimal, CampoAlphanumerico
-from pyspedfiscal._registro import Registro
+from pyspedfiscal.models import Registro
 
 
 class RegistroC197(Registro):

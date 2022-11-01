@@ -1,6 +1,6 @@
 from typing import Literal
 from pyspedfiscal.campos import CampoData, CampoInteiro, CampoChaveAcesso
-from pyspedfiscal._registro import Registro
+from pyspedfiscal.models import Registro
 from pyspedfiscal.tabelas import CodMod
 
 

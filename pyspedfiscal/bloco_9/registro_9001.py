@@ -1,5 +1,5 @@
 from typing import Literal
-from pyspedfiscal._registro import Registro
+from pyspedfiscal.models import Registro
 from pyspedfiscal.campos import CampoEnumerate
 
 

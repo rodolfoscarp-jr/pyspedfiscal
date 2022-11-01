@@ -1,9 +1,8 @@
 from typing import List, Literal
 from pyspedfiscal.models import Registro
-from pyspedfiscal.campos import CampoEnumerate
+from pyspedfiscal.campos import CampoAlphanumerico, CampoEnumerate
 from pydantic import Field
-
-from pyspedfiscal.bloco_c.registro_c100 import RegistroC100
+from .registro_e100 import RegistroE100
 
 
 class IndMov(CampoEnumerate):
@@ -12,11 +11,11 @@ class IndMov(CampoEnumerate):
     sem_movimento = '1'
 
 
-class RegistroC001(Registro):
-    """ ABERTURA DO BLOCO C """
-    reg: Literal['C001']
+class RegistroE001(Registro):
+    """ ABERTURA DO BLOCO E """
+    reg: Literal['E001']
     ind_mov: IndMov
 
     # Registros filhos nivel 2
-    registros_c100: List[RegistroC100] = Field(
+    registros_e100: List[RegistroE100] = Field(
         default_factory=list, exclude=True)

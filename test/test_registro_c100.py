@@ -1,4 +1,4 @@
-from pyspedfiscal.bloco_c import RegistroC100
+from pyspedfiscal.bloco_c.registro_c100 import RegistroC100
 import unittest
 from pathlib import Path
 

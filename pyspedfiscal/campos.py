@@ -34,7 +34,7 @@ class CampoData(date, Campo):
 
         if isinstance(v, str):
             try:
-                return datetime.strptime(v, '%d%m%Y')
+                return datetime.strptime(v, '%d%m%Y').date()
             except ValueError:
                 if v != '':
                     raise ValorCampoInvalido(campo, v)

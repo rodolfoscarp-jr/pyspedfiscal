@@ -16,8 +16,14 @@ from pyspedfiscal.exception import ArquivoInvalido
 class SpedFiscal:
     def __init__(self) -> None:
         self.bloco_0: Bloco0 = None
+        self.bloco_b: BlocoB = None
         self.bloco_c: BlocoC = None
+        self.bloco_d: BlocoD = None
         self.bloco_e: BlocoE = None
+        self.bloco_g: BlocoG = None
+        self.bloco_h: BlocoH = None
+        self.bloco_k: BlocoK = None
+        self.bloco_1: Bloco1 = None
         self.bloco_9: Bloco9 = None
 
     def validar(self, arquivo: str):
@@ -36,7 +42,7 @@ class SpedFiscal:
             return bool(re.match(bloco_0000_pattern, bloco_0000))
 
     @classmethod
-    def importar(cls, arquivo: str):
+    def importar(cls, arquivo: str) -> 'SpedFiscal':
         """Importa um arquivo Sped
 
         Args:
@@ -71,3 +77,5 @@ class SpedFiscal:
             sped.bloco_k = BlocoK.ler_registros(resgitros)
             sped.bloco_1 = Bloco1.ler_registros(resgitros)
             sped.bloco_9 = Bloco9.ler_registros(resgitros)
+
+        return sped

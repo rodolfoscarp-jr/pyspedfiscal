@@ -35,13 +35,12 @@ class BlocoC(Bloco):
 
             # Nivel 1 - Registro Pai
             if tipo_registro == 'C001':
-                blocoregistro_c001 = RegistroC001.ler_registro(registro)
+                bloco.registro_c001 = RegistroC001.ler_registro(registro)
 
             # Nivel 2 - Filho de C001
             elif tipo_registro == 'C100':
                 registro_c100 = RegistroC100.ler_registro(registro)
-                blocoregistro_c001.registros_c100.append(
-                    registro_c100)
+                bloco.registro_c001.registros_c100.append(registro_c100)
 
             # Nivel 3 - Filho de C100
             elif tipo_registro == 'C101':

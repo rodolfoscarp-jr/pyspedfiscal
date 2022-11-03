@@ -10,6 +10,7 @@ class TestSpedFiscal(unittest.TestCase):
 
     def test_deve_ler_um_arquivo_sped_fiscal(self):
         sped_fiscal = SpedFiscal.importar(arquivo_teste)
+        assert sped_fiscal.bloco_0.registro_0000.cnpj == 14028298000152
 
     def test_deve_validar_um_arquivo_fiscal(self):
 

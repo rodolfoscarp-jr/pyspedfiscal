@@ -34,13 +34,54 @@ class TestBloco0(unittest.TestCase):
         self.bloco_0 = Bloco0.ler_registros(bloco)
 
     def test_deve_ler_um_registro_0000(self):
-        reg = self.bloco_0.registro_0000.reg
-        dt_ini = self.bloco_0.registro_0000.dt_ini
-        dt_fin = self.bloco_0.registro_0000.dt_fin
+        registro_0000 = self.bloco_0.registro_0000
+
+        reg = registro_0000.reg
+        dt_ini = registro_0000.dt_ini
+        dt_fin = registro_0000.dt_fin
 
         self.assertEqual(reg, '0000')
         self.assertEqual(dt_ini, date(2022, 7, 1))
         self.assertEqual(dt_fin, date(2022, 7, 31))
+
+    def test_deve_ler_um_registro_0001(self):
+        registro_0001 = self.bloco_0.registro_0001
+
+        reg = registro_0001.reg
+        ind_mov = registro_0001.ind_mov
+
+        # |0001|0|
+
+        self.assertEqual(reg, '0001')
+        self.assertEqual(ind_mov, '0')
+
+    def test_deve_ler_um_registro_0200(self):
+        registro_0200 = self.bloco_0.registro_0001.registros_0200[1]
+
+        # |0200|2|PRODUTO 2|||KG|00|27101921||||||
+
+        self.assertEqual(registro_0200.reg, '0200')
+        self.assertEqual(registro_0200.cod_item, '2')
+        self.assertEqual(registro_0200.descr_item, 'PRODUTO 2')
+        self.assertEqual(registro_0200.cod_barra, '')
+        self.assertEqual(registro_0200.cod_ant_item, '')
+        self.assertEqual(registro_0200.unid_inv, 'KG')
+        self.assertEqual(registro_0200.tipo_item, '00')
+        self.assertEqual(registro_0200.cod_ncm, '27101921')
+        self.assertEqual(registro_0200.ex_ipi, '')
+        self.assertEqual(registro_0200.cod_gen, '')
+        self.assertEqual(registro_0200.cod_lst, '')
+        self.assertEqual(registro_0200.aliq_icms, '')
+        self.assertEqual(registro_0200.cest, '')
+
+    def test_deve_ler_um_registro_0460(self):
+        registro_0460 = self.bloco_0.registro_0001.registros_0460[0]
+
+        # |0460|1|Observacao Teste|
+
+        self.assertEqual(registro_0460.reg, '0460')
+        self.assertEqual(registro_0460.cod_obs, '1')
+        self.assertEqual(registro_0460.txt, 'Observacao Teste')
 
 
 if __name__ == '__main__':

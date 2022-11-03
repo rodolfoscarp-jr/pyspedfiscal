@@ -66,3 +66,7 @@ class CodVer(CampoEnumerate):
     layout_1_13 = '014'
     layout_1_14 = '015'
     layout_1_15 = '016'
+
+
+class GenItemMercServ(CampoEnumerate):
+    """ Tabela 4.2.1 - Tabela Gênero do Item de Mercadoria/Serviço """

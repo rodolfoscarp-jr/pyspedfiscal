@@ -17,6 +17,9 @@ sped_fiscal = SpedFiscal.importar('caminho_arquivo')
 - [ ] Bloco 0
 
   - [x] 0000
+  - [x] 0001
+  - [x] 0200
+  - [x] 0460
 
 - [ ] Bloco C
 
@@ -40,6 +43,13 @@ sped_fiscal = SpedFiscal.importar('caminho_arquivo')
   - [x] C190
   - [x] C195
   - [x] C197
+
+- [ ] Bloco E
+
+  - [x] E001
+  - [x] E100
+  - [x] E110
+  - [x] E115
 
 - [ ] Bloco 9
 

@@ -4,12 +4,21 @@ Lê e serializa um arquivo do tipo Sped Fiscal
 
 ### Exemplo
 
-Utilize o metodo da classe `importar` para carregar um arquivo seped.
+Utilização básica:
 
 ```python
+# Importe a classe SpedFiscal
 from pyspedfiscal import SpedFiscal
 
+# Utilize o metodo da classe `importar` para carregar um arquivo sped
 sped_fiscal = SpedFiscal.importar('caminho_arquivo')
+
+# Utilize a hierarquia do arquivo para percorrer os registros
+registros_0200 = sped_fiscal.bloco_0.resgistro_0001.registros_0200
+
+for registro in registros_0200:
+  ...
+
 ```
 
 ### Registros Implementados
@@ -36,8 +45,6 @@ sped_fiscal = SpedFiscal.importar('caminho_arquivo')
 |         | C190    |         |         |         |         |         |         |         |         |         |
 |         | C195    |         |         |         |         |         |         |         |         |         |
 |         | C197    |         |         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |         |         |         |
-|         |         |         |         |         |         |         |         |         |         |         |
 
 ### Instalação
 

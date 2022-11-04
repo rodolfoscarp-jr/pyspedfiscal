@@ -70,3 +70,4 @@ class CodVer(CampoEnumerate):
 
 class GenItemMercServ(CampoEnumerate):
     """ Tabela 4.2.1 - Tabela Gênero do Item de Mercadoria/Serviço """
+    pass

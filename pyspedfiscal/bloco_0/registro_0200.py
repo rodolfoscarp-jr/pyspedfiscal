@@ -1,7 +1,6 @@
 from typing import Literal
 from pyspedfiscal.models import Registro
 from pyspedfiscal.campos import CampoEnumerate, CampoAlphanumerico, CampoDecimal, CampoInteiro
-from ..tabelas import GenItemMercServ
 
 
 class TipoItem(CampoEnumerate):
@@ -31,7 +30,7 @@ class Registro0200(Registro):
     tipo_item: TipoItem
     cod_ncm: CampoAlphanumerico
     ex_ipi: CampoAlphanumerico
-    cod_gen: GenItemMercServ  # TODO: Tabela 4.2.1.
+    cod_gen: CampoAlphanumerico  # TODO: Tabela 4.2.1.
     # TODO: Anexo I da Lei Complementar Federal nº 116/03.
     cod_lst: CampoAlphanumerico
     aliq_icms: CampoDecimal

@@ -122,9 +122,15 @@ class CampoEnumerate(str, Enum):
 
     @classmethod
     def validate(cls, v, field: ModelField) -> Union[str, Literal['']]:
+
+        campo = field.name
+
         if v == '':
             return ''
         else:
+            if v not in list(cls):
+                raise ValorCampoInvalido(campo, v)
+
             return cls(v)
 
 

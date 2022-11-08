@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='pyspedfiscal',
-    version='0.2.1',
+    version='0.2.2',
     url='https://github.com/rodolfoscarp-jr/pyspedfiscal',
     license='MIT License',
     author='Rodolfo Scarp',

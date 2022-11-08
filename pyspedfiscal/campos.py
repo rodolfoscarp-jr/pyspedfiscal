@@ -2,7 +2,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from datetime import datetime, date
 from decimal import Decimal, InvalidOperation
-from typing import Literal, Union
+from typing import Literal, Union, Optional
 from pydantic.fields import ModelField
 from pyspedfiscal.exception import ValorCampoInvalido
 from enum import Enum
@@ -28,7 +28,7 @@ class CampoData(date, Campo):
         yield cls.validate
 
     @classmethod
-    def validate(cls, v, field: ModelField) -> Union[date, Literal['']]:
+    def validate(cls, v, field: ModelField) -> Optional[date]:
 
         campo = field.name
 
@@ -36,10 +36,10 @@ class CampoData(date, Campo):
             try:
                 return datetime.strptime(v, '%d%m%Y').date()
             except ValueError:
-                if v != '':
+                if v == '':
                     raise ValorCampoInvalido(campo, v)
                 else:
-                    return ''
+                    return None
         elif isinstance(v, date):
             return v
         elif isinstance(v, datetime):
@@ -55,20 +55,20 @@ class CampoDecimal(Decimal, Campo):
         yield cls.validate
 
     @classmethod
-    def validate(cls, v, field: ModelField) -> Union[Decimal, Literal['']]:
+    def validate(cls, v, field: ModelField) -> Optional[Decimal]:
 
         campo = field.name
 
         if isinstance(v, (float, Decimal, int)):
             return Decimal(v)
         elif isinstance(v, str):
-            try:
-                return Decimal(v.replace(',', '.'))
-            except InvalidOperation:
-                if v != '':
+            if v == '':
+                return None
+            else:
+                try:
+                    return Decimal(v.replace(',', '.'))
+                except InvalidOperation:
                     raise ValorCampoInvalido(campo, v)
-                else:
-                    return ''
         else:
             raise ValorCampoInvalido(campo, v)
 
@@ -80,7 +80,7 @@ class CampoInteiro(int, Campo):
         yield cls.validate
 
     @classmethod
-    def validate(cls, v, field: ModelField) -> Union[int, Literal['']]:
+    def validate(cls, v, field: ModelField) -> Optional[int]:
 
         campo = field.name
 
@@ -88,12 +88,12 @@ class CampoInteiro(int, Campo):
             return v
 
         elif isinstance(v, str):
-            try:
-                return int(v)
-            except ValueError:
-                if v == '':
-                    return v
-                else:
+            if v == '':
+                return None
+            else:
+                try:
+                    return int(v)
+                except ValueError:
                     raise ValorCampoInvalido(campo, v)
         else:
             raise ValorCampoInvalido(campo, v)
@@ -105,12 +105,14 @@ class CampoAlphanumerico(str, Campo):
         yield cls.validate
 
     @classmethod
-    def validate(cls, v, field: ModelField) -> Union[date, Literal['']]:
+    def validate(cls, v, field: ModelField) -> Optional[None]:
         campo = field.name
 
         if isinstance(v, str):
-            return v
+            if v == '':
+                return None
 
+            return v
         else:
             raise ValorCampoInvalido(campo, v)
 
@@ -121,12 +123,12 @@ class CampoEnumerate(str, Enum):
         yield cls.validate
 
     @classmethod
-    def validate(cls, v, field: ModelField) -> Union[str, Literal['']]:
+    def validate(cls, v, field: ModelField) -> Optional[str]:
 
         campo = field.name
 
         if v == '':
-            return ''
+            return None
         else:
             if v not in list(cls):
                 raise ValorCampoInvalido(campo, v)

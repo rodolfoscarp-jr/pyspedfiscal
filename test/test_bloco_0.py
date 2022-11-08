@@ -63,16 +63,16 @@ class TestBloco0(unittest.TestCase):
         self.assertEqual(registro_0200.reg, '0200')
         self.assertEqual(registro_0200.cod_item, '2')
         self.assertEqual(registro_0200.descr_item, 'PRODUTO 2')
-        self.assertEqual(registro_0200.cod_barra, '')
-        self.assertEqual(registro_0200.cod_ant_item, '')
+        self.assertEqual(registro_0200.cod_barra, None)
+        self.assertEqual(registro_0200.cod_ant_item, None)
         self.assertEqual(registro_0200.unid_inv, 'KG')
         self.assertEqual(registro_0200.tipo_item, '00')
         self.assertEqual(registro_0200.cod_ncm, '27101921')
-        self.assertEqual(registro_0200.ex_ipi, '')
-        self.assertEqual(registro_0200.cod_gen, '')
-        self.assertEqual(registro_0200.cod_lst, '')
-        self.assertEqual(registro_0200.aliq_icms, '')
-        self.assertEqual(registro_0200.cest, '')
+        self.assertEqual(registro_0200.ex_ipi, None)
+        self.assertEqual(registro_0200.cod_gen, None)
+        self.assertEqual(registro_0200.cod_lst, None)
+        self.assertEqual(registro_0200.aliq_icms, None)
+        self.assertEqual(registro_0200.cest, None)
 
     def test_deve_ler_um_registro_0460(self):
         registro_0460 = self.bloco_0.registro_0001.registros_0460[0]

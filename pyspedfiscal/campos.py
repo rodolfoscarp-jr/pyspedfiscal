@@ -33,13 +33,14 @@ class CampoData(date, Campo):
         campo = field.name
 
         if isinstance(v, str):
+            if v == '':
+                return None
+
             try:
                 return datetime.strptime(v, '%d%m%Y').date()
             except ValueError:
-                if v == '':
-                    raise ValorCampoInvalido(campo, v)
-                else:
-                    return None
+                raise ValorCampoInvalido(campo, v)
+
         elif isinstance(v, date):
             return v
         elif isinstance(v, datetime):
@@ -64,11 +65,12 @@ class CampoDecimal(Decimal, Campo):
         elif isinstance(v, str):
             if v == '':
                 return None
-            else:
-                try:
-                    return Decimal(v.replace(',', '.'))
-                except InvalidOperation:
-                    raise ValorCampoInvalido(campo, v)
+
+            try:
+                return Decimal(v.replace(',', '.'))
+            except InvalidOperation:
+                raise ValorCampoInvalido(campo, v)
+
         else:
             raise ValorCampoInvalido(campo, v)
 
@@ -90,11 +92,12 @@ class CampoInteiro(int, Campo):
         elif isinstance(v, str):
             if v == '':
                 return None
-            else:
-                try:
-                    return int(v)
-                except ValueError:
-                    raise ValorCampoInvalido(campo, v)
+
+            try:
+                return int(v)
+            except ValueError:
+                raise ValorCampoInvalido(campo, v)
+
         else:
             raise ValorCampoInvalido(campo, v)
 
@@ -129,11 +132,11 @@ class CampoEnumerate(str, Enum):
 
         if v == '':
             return None
-        else:
-            if v not in list(cls):
-                raise ValorCampoInvalido(campo, v)
 
-            return cls(v)
+        if v not in list(cls):
+            raise ValorCampoInvalido(campo, v)
+
+        return cls(v)
 
 
 class CampoSerie(CampoAlphanumerico):

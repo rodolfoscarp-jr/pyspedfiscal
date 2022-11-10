@@ -71,3 +71,17 @@ class CodVer(CampoEnumerate):
 class GenItemMercServ(CampoEnumerate):
     """ Tabela 4.2.1 - Tabela Gênero do Item de Mercadoria/Serviço """
     pass
+
+
+class ClassifContribIpi(CampoEnumerate):
+    """ Tabela 4.5.5 - Classificação de Contribuintes do IPI """
+    industrial_transformacao = '00'
+    industrial_beneficiamento = '01'
+    industrial_montagem = '02'
+    industrial_acondicionamento_reacondicionamento = '03'
+    industrial_renovacao_recondicionamento = '04'
+    equiparado_opcao = '05'
+    equiparado_importacao_direta = '06'
+    equiparado_por_lei_especifica = '07'
+    equiparado_nao_enquadrado = '08'
+    outros = '99'

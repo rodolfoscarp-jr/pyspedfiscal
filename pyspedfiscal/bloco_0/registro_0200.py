@@ -1,6 +1,13 @@
 from typing import Literal
-from pyspedfiscal.models import Registro
-from pyspedfiscal.campos import CampoEnumerate, CampoAlphanumerico, CampoDecimal, CampoInteiro
+from typing import List
+from pydantic import Field
+from ..models import Registro
+from ..campos import CampoEnumerate, CampoAlphanumerico, CampoDecimal, CampoInteiro
+from .registro_0205 import Registro0205
+from .registro_0206 import Registro0206
+from .registro_0210 import Registro0210
+from .registro_0220 import Registro0220
+from .registro_0221 import Registro0221
 
 
 class TipoItem(CampoEnumerate):
@@ -35,3 +42,15 @@ class Registro0200(Registro):
     cod_lst: CampoAlphanumerico
     aliq_icms: CampoDecimal
     cest: CampoInteiro
+
+    # Registros filhos nivel 3
+    registros_0205: List[Registro0205] = Field(
+        default_factory=list, exclude=True)
+    registros_0206: List[Registro0206] = Field(
+        default_factory=list, exclude=True)
+    registros_0210: List[Registro0210] = Field(
+        default_factory=list, exclude=True)
+    registros_0220: List[Registro0220] = Field(
+        default_factory=list, exclude=True)
+    registros_0221: List[Registro0221] = Field(
+        default_factory=list, exclude=True)

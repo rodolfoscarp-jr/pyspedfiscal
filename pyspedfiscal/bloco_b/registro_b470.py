@@ -4,6 +4,7 @@ from ..campos import CampoDecimal
 
 
 class RegistroB470(Registro):
+    """ APURAÇÃO DO ISS """
     reg: Literal['B470']
     vl_cont: CampoDecimal
     vl_mat_terc: CampoDecimal

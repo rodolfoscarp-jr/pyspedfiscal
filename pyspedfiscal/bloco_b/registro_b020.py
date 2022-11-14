@@ -4,15 +4,17 @@ from ..campos import CampoAlphanumerico, CampoEnumerate, CampoInteiro, CampoData
 from .registro_b025 import RegistroB025
 from pydantic import Field
 from typing import List
-from ..tabelas import CodMod, CodSit
+from ..tabelas import CodModIss, CodSit
 
 
 class IndOper(CampoEnumerate):
+    """ Indicador do tipo de operação """
     aquisicao = '0'
     prestacao = '1'
 
 
 class IndEmit(CampoEnumerate):
+    """ Indicador do emitente do documento fiscal """
     propria = '0'
     terceiros = '1'
 
@@ -28,7 +30,7 @@ class RegistroB020(Registro):
     ind_oper: IndOper
     ind_emit: IndEmit
     cod_part: CampoAlphanumerico
-    cod_mod: CodMod
+    cod_mod: CodModIss
     cod_sit: CodSit
     ser: CampoSerie
     num_doc: CampoInteiro

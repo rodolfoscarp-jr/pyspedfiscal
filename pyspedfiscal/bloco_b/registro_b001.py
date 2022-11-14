@@ -15,6 +15,7 @@ from typing import List
 
 
 class IndDad(CampoEnumerate):
+    """ Indicador de movimento """
     com_dados_informados = '0'
     sem_dados_informados = '1'
 

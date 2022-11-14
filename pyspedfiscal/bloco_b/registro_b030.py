@@ -4,12 +4,13 @@ from ..campos import CampoAlphanumerico, CampoInteiro, CampoSerie, CampoData, Ca
 from .registro_b035 import RegistroB035
 from pydantic import Field
 from typing import List
-from ..tabelas import CodMod
+from ..tabelas import CodModIss
 
 
 class RegistroB030(Registro):
+    """  NOTA FISCAL DE SERVIÇOS SIMPLIFICADA (CÓDIGO 3A) """
     reg: Literal['B030']
-    cod_mod: CodMod
+    cod_mod: CodModIss
     ser: CampoSerie
     num_doc_ini: CampoInteiro
     num_doc_fin: CampoInteiro

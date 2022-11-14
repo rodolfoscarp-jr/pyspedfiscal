@@ -143,16 +143,17 @@ class CampoSerie(CampoAlphanumerico):
     @classmethod
     def __get_validators__(cls):
         yield cls.validate
-        yield cls._converter
 
     @classmethod
-    def _converter(cls, valor: str, field: ModelField):
-        _valor = valor.strip()
+    def validate(cls, v, field: ModelField) -> Optional[None]:
+        if v == '':
+            return None
 
-        if _valor.isalnum():
-            return _valor.zfill(3)
+        elif v.isnumeric():
+            return str(int(v)).zfill(3)
 
-        return _valor
+        else:
+            return v.strip()
 
 
 class CampoCNPJ(CampoInteiro):

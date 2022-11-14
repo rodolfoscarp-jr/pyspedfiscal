@@ -7,6 +7,7 @@ from typing import List
 
 
 class RegistroB500(Registro):
+    """ APURAÇÃO DO ISS SOCIEDADE UNIPROFISSIONAL """
     reg: Literal['B500']
     vl_rec: CampoDecimal
     qtd_prof: CampoInteiro

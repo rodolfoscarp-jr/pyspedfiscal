@@ -49,6 +49,19 @@ class CodMod(CampoEnumerate):
     conhecimento_de_transporte_eletronico_os = '67'
 
 
+class CodModIss(CampoEnumerate):
+    """ Tabela 4.1.1 - Tabela Documentos Fiscais do ISS """
+    nota_fiscal = '1/1 A'
+    nota_fiscal_servico = '3'
+    nota_fiscal_servico_simp = '3A'
+    nota_fiscal_servico_avulso = '3B'
+    nota_fiscal_produtor = '4'
+    conhecimento_transporte = '8'
+    nota_fiscal_eletronica = '55'
+    nota_fiscal_eletronica_consumidor_final = '65'
+    nota_fiscal_energia_eletrica_eletronica = '66'
+
+
 class CodVer(CampoEnumerate):
     """ Tabela 3.1.1 - Tabela Versão do Leiaute - Sped Fiscal """
     layout_1_01 = '002'

@@ -4,6 +4,7 @@ from ..campos import CampoAlphanumerico, CampoInteiro, CampoDecimal
 
 
 class RegistroB350(Registro):
+    """ SERVIÇOS PRESTADOS POR INSTITUIÇÕES FINANCEIRAS """
     reg: Literal['B350']
     cod_ctd: CampoAlphanumerico
     cta_iss: CampoAlphanumerico

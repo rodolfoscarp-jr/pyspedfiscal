@@ -4,6 +4,6 @@ from pyspedfiscal.campos import CampoInteiro
 
 
 class Registro9999(Registro):
-    """ Abertura do Bloco 9"""
+    """ Encerramento do Arquivo Digital """
     reg: Literal['9999']
     qtd_lin: CampoInteiro

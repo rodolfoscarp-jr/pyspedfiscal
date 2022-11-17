@@ -1,5 +1,5 @@
 from typing import Literal
-from pyspedfiscal.campos import CampoAlphanumerico, CampoInteiro
+from pyspedfiscal.campos import CampoAlphanumerico, CampoInteiro, CampoData
 from pyspedfiscal.models import Registro
 from pyspedfiscal.tabelas import CodMod
 
@@ -11,4 +11,4 @@ class RegistroC114(Registro):
     ecf_fab: CampoAlphanumerico
     ecf_cx: CampoInteiro
     num_doc: CampoInteiro
-    dt_doc: CampoInteiro
+    dt_doc: CampoData

@@ -4,13 +4,13 @@ from pyspedfiscal.models import Registro
 
 
 class IndCarga(CampoEnumerate):
-    rodoviario: '0'
-    ferroviario: '1'
-    rodo_ferroviario: '2'
-    aquaviario: '3'
-    dutoviario: '4'
-    aereo: '5'
-    outros: '9'
+    rodoviario = '0'
+    ferroviario = '1'
+    rodo_ferroviario = '2'
+    aquaviario = '3'
+    dutoviario = '4'
+    aereo = '5'
+    outros = '9'
 
 
 class RegistroC115(Registro):

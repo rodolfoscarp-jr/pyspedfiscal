@@ -1,8 +1,6 @@
 from typing import Literal
 from pyspedfiscal.models import Registro
 from pyspedfiscal.campos import CampoAlphanumerico, CampoInteiro
-from typing import List
-from pydantic import Field
 
 
 class Registro0100(Registro):

@@ -1,6 +1,6 @@
 from typing import List, Literal
 from pyspedfiscal.models import Registro
-from pyspedfiscal.campos import CampoAlphanumerico, CampoEnumerate
+from pyspedfiscal.campos import CampoEnumerate
 from pydantic import Field
 from .registro_e100 import RegistroE100
 

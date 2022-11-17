@@ -62,7 +62,8 @@ class CampoDecimal(Decimal, Campo):
 
         if isinstance(v, (float, Decimal, int)):
             return Decimal(v)
-        elif isinstance(v, str):
+
+        if isinstance(v, str):
             if v == '':
                 return None
 
@@ -89,7 +90,7 @@ class CampoInteiro(int, Campo):
         if isinstance(v, int):
             return v
 
-        elif isinstance(v, str):
+        if isinstance(v, str):
             if v == '':
                 return None
 
@@ -116,8 +117,8 @@ class CampoAlphanumerico(str, Campo):
                 return None
 
             return v
-        else:
-            raise ValorCampoInvalido(campo, v)
+
+        raise ValorCampoInvalido(campo, v)
 
 
 class CampoEnumerate(str, Enum):
@@ -149,11 +150,10 @@ class CampoSerie(CampoAlphanumerico):
         if v == '':
             return None
 
-        elif v.isnumeric():
+        if v.isnumeric():
             return str(int(v)).zfill(3)
 
-        else:
-            return v.strip()
+        return v.strip()
 
 
 class CampoCNPJ(CampoInteiro):
@@ -178,5 +178,5 @@ class OutroCampo(Campo):
         yield cls.validate
 
     @classmethod
-    def validate(cls, v: str):
+    def validate(cls, v, field: ModelField):
         pass

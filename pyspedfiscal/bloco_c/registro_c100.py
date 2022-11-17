@@ -3,7 +3,6 @@ from pyspedfiscal.campos import (
     CampoData, CampoDecimal, CampoInteiro, CampoAlphanumerico, CampoSerie, CampoEnumerate
 )
 from pydantic import Field
-from typing import Literal
 from pyspedfiscal.tabelas import CodSit, CodMod
 from pyspedfiscal.models import Registro
 

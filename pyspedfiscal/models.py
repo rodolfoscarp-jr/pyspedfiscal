@@ -30,14 +30,12 @@ class Registro(BaseModel, ABC):
         except ValorCampoInvalido as e:
             raise LinhaRegistroInvalida(f'Linha invalida.\n{linha}\n{e}')
 
-    def __str__(self) -> str:
-        return super().__str__()
-
 
 class Bloco(BaseModel, ABC):
 
+    @classmethod
     @abstractmethod
-    def ler_registros(self, registros: List[str]):
+    def ler_registros(cls, registros: List[str]):
         pass
 
     def __setattr__(self, name, value):

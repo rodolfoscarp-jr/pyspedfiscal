@@ -1,6 +1,5 @@
-from typing import List, Literal
+from typing import Literal
 from pyspedfiscal.campos import CampoDecimal, CampoInteiro, CampoAlphanumerico
-from pydantic import Field
 from pyspedfiscal.models import Registro
 
 

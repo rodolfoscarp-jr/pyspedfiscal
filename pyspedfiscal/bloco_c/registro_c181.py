@@ -1,4 +1,4 @@
-from pyspedfiscal.campos import CampoData, CampoDecimal, CampoInteiro, CampoAlphanumerico, CampoSerie, CampoEnumerate
+from pyspedfiscal.campos import CampoData, CampoDecimal, CampoInteiro, CampoAlphanumerico, CampoSerie
 from pyspedfiscal.models import Registro
 from typing import Literal
 

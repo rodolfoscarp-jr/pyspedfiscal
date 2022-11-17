@@ -1,7 +1,6 @@
 from typing import Literal
 from pyspedfiscal.campos import CampoDecimal, CampoAlphanumerico, CampoData, CampoEnumerate
 from pyspedfiscal.models import Registro
-from typing import Literal
 
 
 class IndMed(CampoEnumerate):

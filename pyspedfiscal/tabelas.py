@@ -39,7 +39,7 @@ class CodMod(CampoEnumerate):
     conhecimento_de_transporte_multimodal = '26'
     nota_fiscal_transporte_ferroviario = '27'
     nota_fiscal_gas_canalizado = '28'
-    nota_Fiscal_agua_canalizada = '29'
+    nota_fiscal_agua_canalizada = '29'
     nota_fiscal_eletronica = '55'
     conhecimento_de_transporte_eletronico = '57'
     cupom_fiscal_eletronico_sat = '59'

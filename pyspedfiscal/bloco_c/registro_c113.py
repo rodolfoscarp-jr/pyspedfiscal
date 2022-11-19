@@ -1,19 +1,14 @@
 from typing import Literal
-from pyspedfiscal.campos import CampoAlphanumerico, CampoEnumerate, CampoSerie, CampoInteiro, CampoData, CampoChaveAcesso
-from pyspedfiscal.tabelas import CodMod
-from pyspedfiscal.models import Registro
+from ..campos import CampoAlphanumerico, CampoEnumerate, CampoSerie, CampoInteiro, CampoData, CampoChaveAcesso
+from ..tabelas import CodMod
+from ..models import Registro
+from ..gerais import IndEmit
 
 
 class IndOper(CampoEnumerate):
     """ Indicador do tipo de operação """
     entrada = '0'
     saida = '1'
-
-
-class IndEmit(CampoEnumerate):
-    """ Indicador do emitente do documento fiscal """
-    emissao_propria = '0'
-    terceiros = '1'
 
 
 class RegistroC113(Registro):

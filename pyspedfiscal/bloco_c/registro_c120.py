@@ -15,5 +15,5 @@ class RegistroC120(Registro):
     cod_doc_imp: CodDocImp
     num_doc_imp: CampoAlphanumerico
     pis_imp: CampoDecimal
-    cofins: CampoDecimal
+    cofins_imp: CampoDecimal
     num_acdraw: CampoAlphanumerico

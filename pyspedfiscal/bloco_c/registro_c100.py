@@ -1,34 +1,29 @@
 from typing import List, Literal, Optional
-from pyspedfiscal.campos import (
+from ..campos import (
     CampoData, CampoDecimal, CampoInteiro, CampoAlphanumerico, CampoSerie, CampoEnumerate
 )
 from pydantic import Field
-from pyspedfiscal.tabelas import CodSit, CodMod
-from pyspedfiscal.models import Registro
+from ..tabelas import CodSit, CodMod
+from ..models import Registro
 
-from pyspedfiscal.bloco_c.registro_c101 import RegistroC101
-from pyspedfiscal.bloco_c.registro_c105 import RegistroC105
-from pyspedfiscal.bloco_c.registro_c110 import RegistroC110
-from pyspedfiscal.bloco_c.registro_c120 import RegistroC120
-from pyspedfiscal.bloco_c.registro_c130 import RegistroC130
-from pyspedfiscal.bloco_c.registro_c140 import RegistroC140
-from pyspedfiscal.bloco_c.registro_c160 import RegistroC160
-from pyspedfiscal.bloco_c.registro_c170 import RegistroC170
-from pyspedfiscal.bloco_c.registro_c180 import RegistroC180
-from pyspedfiscal.bloco_c.registro_c190 import RegistroC190
-from pyspedfiscal.bloco_c.registro_c195 import RegistroC195
+from ..bloco_c.registro_c101 import RegistroC101
+from ..bloco_c.registro_c105 import RegistroC105
+from ..bloco_c.registro_c110 import RegistroC110
+from ..bloco_c.registro_c120 import RegistroC120
+from ..bloco_c.registro_c130 import RegistroC130
+from ..bloco_c.registro_c140 import RegistroC140
+from ..bloco_c.registro_c160 import RegistroC160
+from ..bloco_c.registro_c170 import RegistroC170
+from ..bloco_c.registro_c180 import RegistroC180
+from ..bloco_c.registro_c190 import RegistroC190
+from ..bloco_c.registro_c195 import RegistroC195
+from ..gerais import IndEmit
 
 
 class IndOper(CampoEnumerate):
     """ Indicador do tipo de operação """
     entrada = '0'
     saida = '1'
-
-
-class IndEmit(CampoEnumerate):
-    """ Indicador do emitente do documento fiscal """
-    emissao_propria = '0'
-    terceiros = '1'
 
 
 class IndFrt(CampoEnumerate):

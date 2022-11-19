@@ -4,11 +4,15 @@ import unittest
 from pyspedfiscal.tabelas import CodMod, CodSit
 from pyspedfiscal.bloco_c import BlocoC
 from pyspedfiscal.bloco_c.registro_c001 import IndMov
-from pyspedfiscal.bloco_c.registro_c100 import IndOper, IndEmit, IndPgto, IndFrt
+from pyspedfiscal.bloco_c.registro_c100 import IndOper, IndPgto, IndFrt
 from pyspedfiscal.bloco_c.registro_c105 import Oper
 from pyspedfiscal.bloco_c.registro_c111 import IndProc
 from pyspedfiscal.bloco_c.registro_c112 import CodDA
-from pyspedfiscal.bloco_c.registro_c113 import IndOper, IndEmit
+from pyspedfiscal.bloco_c.registro_c113 import IndOper
+from pyspedfiscal.bloco_c.registro_c120 import CodDocImp
+from pyspedfiscal.bloco_c.registro_c140 import IndTit
+from pyspedfiscal.bloco_c.registro_c170 import IndMov as IndMovItem, IndAPur
+from pyspedfiscal.gerais import IndEmit
 
 
 class TestBlocoC(unittest.TestCase):
@@ -36,6 +40,8 @@ class TestBlocoC(unittest.TestCase):
 |C190|060|5102|0|0|0|0|0|0|0|0||
 |C195|1|FECP referente ao diferencial de al�quotas|
 |C197|SP10090718|FECP referente ao diferencial de al�quotas||3256,23|0|596,98|0|
+|C100|0|1|1|55|00||12|11111111111111111111111111111111111111111111|01062022|01072022|150|0|366|25|12|2|36|0|56|300|10|200|20|44|6|12|4|11|
+|C120|0|12|1000|11|1222|
 |C100|1|1|3|55|00|001|3|33220714028298000152550010000000031000147729|27072022|27072022|41961,29|2|0|0|41961,29|0|0|0|0|0|0|0|0|0|0|0|0|0|
 |C170|2|3||381,563|KG|2896,06|0|0|060|5102|1653002|0|0|0|0|0|0||||0|0|0|49|2896,06|0,35|0|0|10,14|49|2896,06|0,35|0|0|10,14|4212|0|
 |C190|060|5102|0|0|0|0|0|0|0|0||
@@ -54,6 +60,13 @@ class TestBlocoC(unittest.TestCase):
 |C100|1|0|1|01|00||1||01072022|01072022|110|0|0|||0|0||0|1000||10|||0|0|||
 |C110|1||
 |C115|0|11111111111111|12313|12345678909|1100031|22222222222222|123||1100031|
+|C130|200|10000|1212|1212|3225|36|445|
+|C140|0|01|Fatura teste|10|2|11000|
+|C141|1|01012022|200|
+|C160|4|gfg1111|10|10|100|AM|
+|C165|4|kvk1111|FF44|121|125050|35|12|12|10|Motorista|12345678909|AM|
+|C185|122|2|030|5106||12|UN|1500|122|588|212|3235|221|15|0|454||
+|C186|10|1|010|1117||10|UN|04||10||01062022|1|12|20|30|20|11|
 |C990|35|""".splitlines()
 
         cls.bloco_c = BlocoC.ler_registros(bloco)
@@ -161,7 +174,7 @@ class TestBlocoC(unittest.TestCase):
 
         self.assertEqual(registro_c113.reg, 'C113')
         self.assertEqual(registro_c113.ind_oper, IndOper.entrada)
-        self.assertEqual(registro_c113.ind_emit, IndEmit.emissao_propria)
+        self.assertEqual(registro_c113.ind_emit, IndEmit.propria)
         self.assertEqual(registro_c113.cod_part, '1')
         self.assertEqual(registro_c113.cod_mod, CodMod.nota_fiscal)
         self.assertEqual(registro_c113.ser, '001')
@@ -188,6 +201,143 @@ class TestBlocoC(unittest.TestCase):
         # |C115|0|11111111111111|12313|12345678909|1100031|22222222222222|123||1100031|
 
         self.assertEqual(registro_c115.reg, 'C115')
+
+    def test_deve_ler_um_registro_c116(self):
+        registro_c116 = self.bloco_c.registro_c001.registros_c100[0].registros_c110[0].registros_c116[0]
+
+        # |C116|59|1|33220714028298000152570010000002110001477205|1|01072022|
+
+        self.assertEqual(registro_c116.reg, 'C116')
+        self.assertEqual(registro_c116.cod_mod, CodMod.cupom_fiscal_eletronico_sat)
+        self.assertEqual(registro_c116.nr_sat, 1)
+        self.assertEqual(registro_c116.chv_cfe, 33220714028298000152570010000002110001477205)
+        self.assertEqual(registro_c116.num_cfe, 1)
+        self.assertEqual(registro_c116.dt_doc, date(2022, 7, 1))
+
+    def test_deve_ler_um_registro_c120(self):
+        registro_c120 = self.bloco_c.registro_c001.registros_c100[2].registros_c120[0]
+
+        # |C120|0|12|1000|11|1222|
+
+        self.assertEqual(registro_c120.reg, 'C120')
+        self.assertEqual(registro_c120.cod_doc_imp, CodDocImp.declaracao_importacao)
+        self.assertEqual(registro_c120.num_doc_imp, '12')
+        self.assertEqual(registro_c120.pis_imp, Decimal('1000'))
+        self.assertEqual(registro_c120.cofins_imp, Decimal('11'))
+        self.assertEqual(registro_c120.num_acdraw, '1222')
+
+    def test_deve_ler_um_registro_c130(self):
+        registro_c130 = self.bloco_c.registro_c001.registros_c100[-1].registro_c130
+
+        # |C130|200|10000|1212|1212|3225|36|445|
+
+        self.assertEqual(registro_c130.reg, 'C130')
+        self.assertEqual(registro_c130.vl_serv_nt, Decimal('200'))
+        self.assertEqual(registro_c130.vl_bc_issqn, Decimal('10000'))
+        self.assertEqual(registro_c130.vl_issqn, Decimal('1212'))
+        self.assertEqual(registro_c130.vl_bc_irrf, Decimal('1212'))
+        self.assertEqual(registro_c130.vl_irrf, Decimal('3225'))
+        self.assertEqual(registro_c130.vl_bc_prev, Decimal('36'))
+        self.assertEqual(registro_c130.vl_prev, Decimal('445'))
+
+    def test_deve_ler_um_registro_c140(self):
+        registro_c140 = self.bloco_c.registro_c001.registros_c100[-1].registro_c140
+
+        # |C140|0|01|Fatura teste|10|2|11000|
+
+        self.assertEqual(registro_c140.reg, 'C140')
+        self.assertEqual(registro_c140.ind_emit, IndEmit.propria)
+        self.assertEqual(registro_c140.ind_tit, IndTit.cheque)
+        self.assertEqual(registro_c140.desc_tit, 'Fatura teste')
+        self.assertEqual(registro_c140.num_tit, '10')
+        self.assertEqual(registro_c140.qtd_parc, 2)
+        self.assertEqual(registro_c140.vl_tit, Decimal('11000'))
+
+    def test_deve_ler_um_registro_c141(self):
+        registro_c141 = self.bloco_c.registro_c001.registros_c100[-1].registro_c140.registros_c141[0]
+
+        # |C141|1|01012022|200|
+
+        self.assertEqual(registro_c141.reg, 'C141')
+        self.assertEqual(registro_c141.num_parc, 1)
+        self.assertEqual(registro_c141.dt_vcto, date(2022, 1, 1))
+        self.assertEqual(registro_c141.vl_parc, Decimal('200'))
+
+    def test_deve_ler_um_registro_c160(self):
+        registro_c160 = self.bloco_c.registro_c001.registros_c100[-1].registro_c160
+
+        # |C160|4|gfg1111|10|10|100|AM|
+
+        self.assertEqual(registro_c160.reg, 'C160')
+        self.assertEqual(registro_c160.cod_part, '4')
+        self.assertEqual(registro_c160.veic_id, 'gfg1111')
+        self.assertEqual(registro_c160.qtd_vol, 10)
+        self.assertEqual(registro_c160.peso_brt, Decimal('10'))
+        self.assertEqual(registro_c160.peso_liq, Decimal('100'))
+        self.assertEqual(registro_c160.uf_id, 'AM')
+
+    def test_deve_ler_um_registro_c165(self):
+        registro_c165 = self.bloco_c.registro_c001.registros_c100[-1].registro_c160.registros_c165[0]
+
+        # |C165|4|kvk1111|FF44|121|125050|35|12|12|10|Motorista|12345678909|AM|
+
+        self.assertEqual(registro_c165.reg, 'C165')
+        self.assertEqual(registro_c165.cod_part, '4')
+        self.assertEqual(registro_c165.veic_id, 'kvk1111')
+        self.assertEqual(registro_c165.cod_aut, 'FF44')
+        self.assertEqual(registro_c165.nr_passe, '121')
+        self.assertEqual(registro_c165.hora, '125050')
+        self.assertEqual(registro_c165.temper, Decimal('35'))
+        self.assertEqual(registro_c165.qtd_vol, 12)
+        self.assertEqual(registro_c165.peso_brt, Decimal('12'))
+        self.assertEqual(registro_c165.peso_liq, Decimal('10'))
+        self.assertEqual(registro_c165.nom_mot, 'Motorista')
+        self.assertEqual(registro_c165.cpf, 12345678909)
+        self.assertEqual(registro_c165.uf_id, 'AM')
+
+    def test_deve_ler_um_registro_c170(self):
+        registro_c170 = self.bloco_c.registro_c001.registros_c100[0].registros_c170[0]
+
+        # |C170|2|1||381,563|UN|2896,06|0|0|060|5101|1653002|0|0|0|0|0|0||||0|0|0|49|2896,06|0,35|0|0|10,14|49|2896,06|0,35|0|0|10,14|4212|0|
+
+        self.assertEqual(registro_c170.reg, 'C170')
+        self.assertEqual(registro_c170.num_item, 2)
+        self.assertEqual(registro_c170.cod_item, '1')
+        self.assertEqual(registro_c170.descr_compl, None)
+        self.assertEqual(registro_c170.qtd, Decimal('381.563'))
+        self.assertEqual(registro_c170.unid, 'UN')
+        self.assertEqual(registro_c170.vl_item, Decimal('2896.06'))
+        self.assertEqual(registro_c170.vl_desc, Decimal('0'))
+        self.assertEqual(registro_c170.ind_mov, IndMovItem.sim)
+        self.assertEqual(registro_c170.cst_icms, 60)
+        self.assertEqual(registro_c170.cfop, 5101)
+        self.assertEqual(registro_c170.cod_nat, '1653002')
+        self.assertEqual(registro_c170.vl_bc_icms, Decimal('0'))
+        self.assertEqual(registro_c170.aliq_icms, Decimal('0'))
+        self.assertEqual(registro_c170.vl_icms, Decimal('0'))
+        self.assertEqual(registro_c170.vl_bc_icms_st, Decimal('0'))
+        self.assertEqual(registro_c170.aliq_st, Decimal('0'))
+        self.assertEqual(registro_c170.vl_icms_st, Decimal('0'))
+        self.assertEqual(registro_c170.ind_apur, None)
+        self.assertEqual(registro_c170.cst_ipi, None)
+        self.assertEqual(registro_c170.cod_enq, None)
+        self.assertEqual(registro_c170.vl_bc_ipi, Decimal('0'))
+        self.assertEqual(registro_c170.aliq_ipi, Decimal('0'))
+        self.assertEqual(registro_c170.vl_ipi, Decimal('0'))
+        self.assertEqual(registro_c170.cst_pis, 49)
+        self.assertEqual(registro_c170.vl_bc_pis, Decimal('2896.06'))
+        self.assertEqual(registro_c170.aliq_pis_percent, Decimal('0.35'))
+        self.assertEqual(registro_c170.quant_bc_pis, Decimal('0'))
+        self.assertEqual(registro_c170.aliq_pis, Decimal('0'))
+        self.assertEqual(registro_c170.vl_pis, Decimal('10.14'))
+        self.assertEqual(registro_c170.cst_cofins, 49)
+        self.assertEqual(registro_c170.vl_bc_cofins, Decimal('2896.06'))
+        self.assertEqual(registro_c170.aliq_cofins_percent, Decimal('0.35'))
+        self.assertEqual(registro_c170.quant_bc_cofins, Decimal('0'))
+        self.assertEqual(registro_c170.aliq_cofins, Decimal('0'))
+        self.assertEqual(registro_c170.vl_cofins, Decimal('10.14'))
+        self.assertEqual(registro_c170.cod_cta, '4212')
+        self.assertEqual(registro_c170.vl_abat_nt, Decimal('0'))
 
 
 if __name__ == '__main__':

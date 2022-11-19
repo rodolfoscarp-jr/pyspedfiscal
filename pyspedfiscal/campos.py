@@ -168,7 +168,7 @@ class CampoCNPJouCPF(CampoInteiro):
     pass
 
 
-class CampoChaveAcesso(CampoAlphanumerico):
+class CampoChaveAcesso(CampoInteiro):
     pass
 
 

@@ -79,6 +79,7 @@ class CodVer(CampoEnumerate):
     layout_1_13 = '014'
     layout_1_14 = '015'
     layout_1_15 = '016'
+    layout_1_16 = '017'
 
 
 class GenItemMercServ(CampoEnumerate):
